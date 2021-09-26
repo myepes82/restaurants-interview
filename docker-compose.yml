@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  database:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    links:
+      - database
+    networks:
+      - interview
+      
+  backend:
+    environment:
+      PORT: 80
+      SECRET: 1006361228
+      DBHOST: database
+      DBNAME: restaurants
+    ports:
+      - 80:80
+    build: . 
+    depends_on:
+      - database
+    networks:
+      - interview
+  
+  networks:
+    interview:
+      driver: bridge

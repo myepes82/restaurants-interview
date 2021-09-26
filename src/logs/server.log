@@ -1,0 +1,511 @@
+[2021-09-25T14:38:57.054] [ERROR] cheese - ReferenceError: DBRef is not defined
+    at C:\Users\Marlon\Desktop\ProjectInterview\src\controllers\RestaurantController.js:59:55
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+[2021-09-25T14:39:15.716] [ERROR] cheese - ReferenceError: DBRef is not defined
+    at C:\Users\Marlon\Desktop\ProjectInterview\src\controllers\RestaurantController.js:59:55
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+[2021-09-25T17:10:31.066] [ERROR] cheese - Saving user error: ReferenceError: userSaved is not defined
+[2021-09-25T17:16:36.202] [ERROR] cheese - Saving user error: ReferenceError: userSaved is not defined
+[2021-09-25T17:18:01.974] [ERROR] cheese - Saving user error: ReferenceError: userSaved is not defined
+[2021-09-25T17:18:29.914] [ERROR] cheese - Saving user error: ReferenceError: userSaved is not defined
+[2021-09-25T17:18:43.145] [ERROR] cheese - Saving user error: ReferenceError: userSaved is not defined
+[2021-09-25T17:21:35.342] [ERROR] cheese - Searching existing email error: TypeError: (intermediate value) is not iterable
+[2021-09-25T17:22:28.102] [ERROR] cheese - Searching existing email error: TypeError: (intermediate value) is not iterable
+[2021-09-25T17:23:06.446] [ERROR] cheese - Searching existing email error: TypeError: (intermediate value) is not iterable
+[2021-09-25T17:23:33.661] [ERROR] cheese - Searching existing email error: TypeError: (intermediate value) is not iterable
+[2021-09-25T17:25:24.804] [ERROR] cheese - Saving user error: error: el valor de hora/fecha está fuera de rango: «1632608724801»
+[2021-09-25T17:26:10.585] [ERROR] cheese - Saving user error: error: el valor de hora/fecha está fuera de rango: «1632608770583»
+[2021-09-25T17:28:24.313] [ERROR] cheese - Saving user error: error: el valor de hora/fecha está fuera de rango: «1632608904302»
+[2021-09-25T17:28:49.387] [ERROR] cheese - Saving user error: error: el valor de hora/fecha está fuera de rango: «1632608929385»
+[2021-09-25T18:38:20.539] [ERROR] cheese - Searching existing user error: ReferenceError: existUser is not defined
+[2021-09-25T18:58:26.382] [ERROR] cheese - Error saving restaurant: error: la sintaxis de entrada no es válida para integer: «{"email":"myepes82@misena.edu.co","id":"1","iat":1632613130,"exp":1632614330}»
+[2021-09-25T19:00:38.028] [ERROR] cheese - Error saving restaurant: error: la sintaxis de entrada no es válida para integer: «{"email":"myepes82@misena.edu.co","id":"1","iat":1632614423,"exp":1632615623}»
+[2021-09-25T19:01:26.350] [ERROR] cheese - Error saving restaurant: error: la sintaxis de entrada no es válida para integer: «{"email":"myepes82@misena.edu.co","id":"1","iat":1632614423,"exp":1632615623}»
+[2021-09-25T19:22:07.682] [ERROR] cheese - ReferenceError: cuenta is not defined
+    at C:\Users\Marlon\Desktop\ProjectInterview\src\controllers\RestaurantController.js:68:21
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+[2021-09-26T11:58:11.069] [ERROR] cheese - error: error de sintaxis en o cerca de «INSET»
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 103,
+  severity: 'ERROR',
+  code: '42601',
+  detail: undefined,
+  hint: undefined,
+  position: '1',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'scan.l',
+  line: '1134',
+  routine: 'scanner_yyerror'
+}
+[2021-09-26T11:58:27.502] [ERROR] cheese - error: no existe la relación «liked_restaurants»
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 177,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '13',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\parser\\parse_relation.c',
+  line: '1180',
+  routine: 'parserOpenTable'
+}
+[2021-09-26T11:59:03.286] [ERROR] cheese - error: el valor null para la columna «user_id» viola la restricción not null
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 288,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'La fila que falla contiene (1, null, 2, 2021-09-26).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'linked_restaurants',
+  column: 'user_id',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2032',
+  routine: 'ExecConstraints'
+}
+[2021-09-26T12:05:42.625] [ERROR] cheese - error: INSERT tiene más expresiones que columnas de destino
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 181,
+  severity: 'ERROR',
+  code: '42601',
+  detail: undefined,
+  hint: undefined,
+  position: '90',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\parser\\analyze.c',
+  line: '924',
+  routine: 'transformInsertRow'
+}
+[2021-09-26T12:07:35.335] [ERROR] cheese - error: el valor null para la columna «id» viola la restricción not null
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 281,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'La fila que falla contiene (null, null, 2, 2021-09-26).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'linked_restaurants',
+  column: 'id',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2032',
+  routine: 'ExecConstraints'
+}
+[2021-09-26T12:07:55.009] [ERROR] cheese - error: INSERT tiene más columnas de destino que expresiones
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 181,
+  severity: 'ERROR',
+  code: '42601',
+  detail: undefined,
+  hint: undefined,
+  position: '61',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\parser\\analyze.c',
+  line: '946',
+  routine: 'transformInsertRow'
+}
+[2021-09-26T12:08:30.952] [ERROR] cheese - error: el valor null para la columna «user_id» viola la restricción not null
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 288,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'La fila que falla contiene (2, null, 2, 2021-09-26).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'linked_restaurants',
+  column: 'user_id',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2032',
+  routine: 'ExecConstraints'
+}
+[2021-09-26T12:08:53.365] [ERROR] cheese - error: el valor null para la columna «user_id» viola la restricción not null
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 288,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'La fila que falla contiene (3, null, 2, 2021-09-26).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'linked_restaurants',
+  column: 'user_id',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2032',
+  routine: 'ExecConstraints'
+}
+[2021-09-26T12:11:48.921] [ERROR] cheese - error: el valor null para la columna «user_id» viola la restricción not null
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 288,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'La fila que falla contiene (5, null, 2, 2021-09-26).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'linked_restaurants',
+  column: 'user_id',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2032',
+  routine: 'ExecConstraints'
+}
+[2021-09-26T12:13:27.585] [ERROR] cheese - error: el valor null para la columna «user_id» viola la restricción not null
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 288,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'La fila que falla contiene (8, null, 2, 2021-09-26).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'linked_restaurants',
+  column: 'user_id',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2032',
+  routine: 'ExecConstraints'
+}
+[2021-09-26T12:14:41.857] [ERROR] cheese - error: el valor null para la columna «user_id» viola la restricción not null
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 288,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'La fila que falla contiene (9, null, 2, 2021-09-26).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'linked_restaurants',
+  column: 'user_id',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2032',
+  routine: 'ExecConstraints'
+}
+[2021-09-26T12:16:35.355] [ERROR] cheese - error: no existe la columna «undefined»
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 170,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: undefined,
+  position: '77',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\parser\\parse_relation.c',
+  line: '3294',
+  routine: 'errorMissingColumn'
+}
+[2021-09-26T13:55:41.161] [ERROR] cheese - TypeError: pageNumber.toInt is not a function
+    at C:\Users\Marlon\Desktop\ProjectInterview\src\controllers\RestaurantController.js:89:26
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+[2021-09-26T14:15:13.194] [ERROR] cheese - error: OFFSET no debe ser negativo
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 153,
+  severity: 'ERROR',
+  code: '2201X',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\nodelimit.c',
+  line: '262',
+  routine: 'recompute_limits'
+}
+[2021-09-26T14:16:35.661] [ERROR] cheese - error: OFFSET no debe ser negativo
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 153,
+  severity: 'ERROR',
+  code: '2201X',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\nodelimit.c',
+  line: '262',
+  routine: 'recompute_limits'
+}
+[2021-09-26T14:17:34.412] [ERROR] cheese - ReferenceError: totalelements is not defined
+    at C:\Users\Marlon\Desktop\ProjectInterview\src\controllers\RestaurantController.js:172:31
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+[2021-09-26T14:18:05.040] [ERROR] cheese - ReferenceError: totalelements is not defined
+    at C:\Users\Marlon\Desktop\ProjectInterview\src\controllers\RestaurantController.js:173:31
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+[2021-09-26T14:20:04.010] [ERROR] cheese - error: OFFSET no debe ser negativo
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 153,
+  severity: 'ERROR',
+  code: '2201X',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\nodelimit.c',
+  line: '262',
+  routine: 'recompute_limits'
+}
+[2021-09-26T14:21:22.529] [ERROR] cheese - error: OFFSET no debe ser negativo
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 153,
+  severity: 'ERROR',
+  code: '2201X',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\nodelimit.c',
+  line: '262',
+  routine: 'recompute_limits'
+}
+[2021-09-26T15:51:18.963] [ERROR] cheese - error: error de sintaxis en o cerca de «update_date»
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:287:98)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:126:29)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\parser.js:39:38)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (events.js:375:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 110,
+  severity: 'ERROR',
+  code: '42601',
+  detail: undefined,
+  hint: undefined,
+  position: '65',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'scan.l',
+  line: '1134',
+  routine: 'scanner_yyerror'
+}
