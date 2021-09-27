@@ -9,7 +9,7 @@ PG_DBUSER_ADM="postgres"
 PG_DBUSER="postgres"
 PG_DBPASS="1234"
 PG_DBNAME="restaurants"
-DBADMIN_SECRET_PASSWD
+
  
 # -- SE LIMPIA LA CONSOLA Y SE DESPLIEGA EL TITULO DEL PROGRAMA.
 clear
@@ -54,13 +54,12 @@ if [ -z $3 ]; then
     exit
 fi
 
-DBADMIN_SECRET_PASSWD = $3
 
 
 echo "" > $APP_HOME/$APP_OUTPUT
 if [ $1 == "pg" ]; then
     export PGUSER=$PG_DBUSER_ADM
-    export PGPASSWORD=$DBADMIN_SECRET_PASSWD
+    export PGPASSWORD=$3
     echo "Imporing database  PostgreSQL. This can take any minutes..."
     psql -L $APP_HOME/$APP_OUTPUT -d $PG_DBNAME -f $APP_HOME/$2 >> $APP_HOME/$APP_OUTPUT
     unset PGUSER
