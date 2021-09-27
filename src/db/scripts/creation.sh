@@ -59,12 +59,16 @@ fi
 echo "" > $APP_HOME/$APP_OUTPUT
 if [ $1 == "pg" ]; then
     export PGUSER=$PG_DBUSER_ADM
-    echo "Imporing database  PostgreSQL. This can take any minutes..."
+    export PGPASSWORD=$DBADMIN_SECRET_PASSWD
     psql -L $APP_HOME/$APP_OUTPUT -c "create user $PG_DBUSER createdb createuser createrole;" >> $APP_HOME/$APP_OUTPUT
-    psql -L $APP_HOME/$APP_OUTPUT -c "alter user $PG_DBUSER with password '$3';" >> $APP_HOME/$APP_OUTPUT
+    psql -L $APP_HOME/$APP_OUTPUT -c "alter user $PG_DBUSER with password '$PG_DBPASS';" >> $APP_HOME/$APP_OUTPUT
     psql -L $APP_HOME/$APP_OUTPUT -c "create database $PG_DBNAME;" >> $APP_HOME/$APP_OUTPUT
     psql -L $APP_HOME/$APP_OUTPUT -c "alter database $PG_DBNAME owner to $PG_DBUSER;" >> $APP_HOME/$APP_OUTPUT
     psql -L $APP_HOME/$APP_OUTPUT -d $PG_DBNAME -f $APP_HOME/$2 >> $APP_HOME/$APP_OUTPUT
+    unset PGUSER
+    unset PGPASSWORD
+    echo "Fin del proceso de importación! Puede ver la salida del proceso en el archivo '$APP_HOME/$APP_OUTPUT'."
+    echo
     unset PGUSER
     echo "Database were imported '$APP_HOME/$APP_OUTPUT'."
     echo
