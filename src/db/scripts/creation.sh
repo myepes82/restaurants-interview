@@ -60,6 +60,9 @@ echo "" > $APP_HOME/$APP_OUTPUT
 if [ $1 == "pg" ]; then
     export PGUSER=$PG_DBUSER_ADM
     export PGPASSWORD=$3
+    psql -L $APP_HOME/$APP_OUTPUT -c "create user $PG_DBUSER createdb createuser createrole;" >> $APP_HOME/$APP_OUTPUT
+    psql -L $APP_HOME/$APP_OUTPUT -c "alter user $PG_DBUSER with password '$3';" >> $APP_HOME/$APP_OUTPUT
+    psql -L $APP_HOME/$APP_OUTPUT -c "create database $PG_DBNAME;" >> $APP_HOME/$APP_OUTPUT
     echo "Imporing database  PostgreSQL. This can take any minutes..."
     psql -L $APP_HOME/$APP_OUTPUT -d $PG_DBNAME -f $APP_HOME/$2 >> $APP_HOME/$APP_OUTPUT
     unset PGUSER
