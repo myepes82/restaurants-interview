@@ -1,15 +1,14 @@
 FROM node:14
 
-RUN mkdir -p /usr/src/app
 
-WORKDIR /usr/src/app
+WORKDIR /project
 
 COPY package*.json ./
 
-RUN npm install 
+COPY ./src ./src
 
-COPY . .
+RUN npm install --production --silent && mv node_modules ../
 
-EXPOSE 80
+EXPOSE 8080
 
-CMD ["npm", "start"]
+CMD ["node", "./src/index.js"]

@@ -10,7 +10,7 @@ const authJwtAuthorizer = require('./middlewares/auth-jwt-validate');
 
 class Server {
   SERVER = undefined;
-  PORT = process.env.PORT || 80;
+  PORT = process.env.PORT || 8080;
 
   config() {
       app.use(express.json());

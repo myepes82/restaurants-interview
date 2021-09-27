@@ -42,4 +42,14 @@ routes.get('/my-liked-restaurants', (req, res)=> {
         });
 });
 
+routes.get('/get-all', (req, res)=> {
+    controller.getAllPublicRestaurants(req)
+        .then((response)=> {
+            res.status(200).send(response);
+        })
+        .catch((error)=> {
+            res.status(error[0]).send(error[1]);
+        });
+});
+
 module.exports = routes;
