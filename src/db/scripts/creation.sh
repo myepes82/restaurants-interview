@@ -5,8 +5,8 @@ sudo /etc/init.d/postgresql restart
 # -- CONFIGURACIÓN DE VARIABLES GLOBALES
 APP_HOME="."
 APP_OUTPUT="import.log"
-PG_DBUSER_ADM="postgres"
-PG_DBUSER="postgres"
+PG_DBUSER_ADM="ghost"
+PG_DBUSER="ghost"
 PG_DBPASS="1234"
 PG_DBNAME="restaurants"
 
