@@ -1,6 +1,7 @@
 const routes = require("express").Router();
 const controller = require("../auth/AuthController");
 
+
 routes.post("/register", (req, res) => {
   controller
     .register(req)

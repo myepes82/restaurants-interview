@@ -6,6 +6,17 @@ const jwt = require("jsonwebtoken");
 const db = require('../db/db');
 const pool = require("../db/db");
 
+/**
+ * 
+ * @param {*} req
+ * this param is composed for all alement on a http request, example: Headers, Body ... 
+ * This method validates that the incoming fields correspond to the defined restrictions.
+ * After this, it verifies that a user identified with that email does not exist in the database.
+ * After verification, the password provided by the user is encrypted and the user is saved. 
+ * @returns 
+ * A notification that the user was created
+ * {data: "The user has been saved"}
+ */
 function Register(req) {
   return new Promise(async (resolve, reject) => {
     const body = req.body;
@@ -62,6 +73,15 @@ function Register(req) {
   });
 }
 
+/**
+ * @param {*} req
+ * this param is composed for all alement on a http request, example: Headers, Body ... 
+ * This method validates that the incoming fields correspond to the defined restrictions.
+ * After verification, it goes to compare the password provided versus the password that is stored.
+ * If the comparison is successful, a session token is created that will be valid for 20 minutes
+ * @returns 
+ * {"authentication": "ok", "token": "eyJhbGciOi......"}
+ */
 function Login(req) {
   return new Promise(async (resolve, reject) => {
     const body = req.body;
