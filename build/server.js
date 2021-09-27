@@ -1,20 +1,20 @@
 "use strict";
 
-const express = require("express");
+const express = require('express');
 
 const app = express();
 
-const cors = require("cors");
+const cors = require('cors');
 
-const morgan = require("morgan");
+const morgan = require('morgan');
 
-const sqlInjectionPreventer = require("./middlewares/sql-injection-prevent");
+const sqlInjectionPreventer = require('./middlewares/sql-injection-prevent');
 
-const restaurantRoutes = require("./routes/RestaurantRoute");
+const restaurantRoutes = require('./routes/RestaurantRoute');
 
-const authRoutes = require("./routes/AuthRoute");
+const authRoutes = require('./routes/AuthRoute');
 
-const authJwtAuthorizer = require("./middlewares/auth-jwt-validate");
+const authJwtAuthorizer = require('./middlewares/auth-jwt-validate');
 
 class Server {
   SERVER = undefined;
@@ -25,10 +25,10 @@ class Server {
     app.use(express.urlencoded({
       extended: true
     }));
-    app.use(cors(this.corsConfiguration("*", 200)));
-    app.use(morgan("dev"));
-    app.use("/api/auth", sqlInjectionPreventer, authRoutes);
-    app.use("/api/restaurant", authJwtAuthorizer, sqlInjectionPreventer, restaurantRoutes);
+    app.use(cors(this.corsConfiguration('*', 200)));
+    app.use(morgan('dev'));
+    app.use('/api/auth', sqlInjectionPreventer, authRoutes);
+    app.use('/api/restaurant', authJwtAuthorizer, sqlInjectionPreventer, restaurantRoutes);
   }
 
   corsConfiguration(origin, successStatus) {

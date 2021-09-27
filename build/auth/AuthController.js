@@ -1,16 +1,17 @@
 "use strict";
 
-const joi = require("@hapi/joi");
+/* eslint-disable no-async-promise-executor */
+const joi = require('@hapi/joi');
 
-const logger = require("../logs/logger");
+const logger = require('../logs/logger');
 
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
 
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 const db = require('../db/db');
 
-const pool = require("../db/db");
+const pool = require('../db/db');
 /**
  * 
  * @param {*} req
@@ -46,21 +47,21 @@ function Register(req) {
     const regExResponse = regEx.test(body.password);
 
     if (!regExResponse) {
-      console.error("Password must contain one lowercase letter, one uppercase letter, one special character and one numeric character");
+      console.error('Password must contain one lowercase letter, one uppercase letter, one special character and one numeric character');
       return reject([400, {
-        error: "Password must contain one lowercase letter, one uppercase letter, one special character and one numeric character"
+        error: 'Password must contain one lowercase letter, one uppercase letter, one special character and one numeric character'
       }]);
     }
 
     try {
       const {
         rows
-      } = await db.query("SELECT * FROM  users where email = $1", [body.email]);
+      } = await db.query('SELECT * FROM  users where email = $1', [body.email]);
 
       if (rows[0]) {
         console.error(`Error on user registration, email ${body.email} alredy exist`);
         return reject([400, {
-          error: "Email already exist"
+          error: 'Email already exist'
         }]);
       }
     } catch (error) {
@@ -75,9 +76,9 @@ function Register(req) {
     const hash = await bcrypt.hash(body.password, salt);
 
     try {
-      await pool.query("INSERT INTO users(email, password, creation_date) VALUES( $1, $2, to_timestamp($3 / 1000.0) )", [body.email, hash, Date.now()]);
+      await pool.query('INSERT INTO users(email, password, creation_date) VALUES( $1, $2, to_timestamp($3 / 1000.0) )', [body.email, hash, Date.now()]);
       return resolve({
-        data: "The user has been saved"
+        data: 'The user has been saved'
       });
     } catch (error) {
       console.error(`Saving user error: ${error}`);
@@ -121,30 +122,30 @@ function Login(req) {
     const regExResponse = regEx.test(body.password);
 
     if (!regExResponse) {
-      console.error("Password must contain one lowercase letter, one uppercase letter, one special character and one numeric character");
+      console.error('Password must contain one lowercase letter, one uppercase letter, one special character and one numeric character');
       return reject([400, {
-        error: "Password must contain one lowercase letter, one uppercase letter, one special character and one numeric character"
+        error: 'Password must contain one lowercase letter, one uppercase letter, one special character and one numeric character'
       }]);
     }
 
     try {
       const {
         rows
-      } = await db.query("SELECT * FROM  users where email = $1", [body.email]);
+      } = await db.query('SELECT * FROM  users where email = $1', [body.email]);
 
       if (!rows[0]) {
         console.error(`Login error, user  ${body.email} doesn't exist`);
         return reject([404, {
-          error: "User not found"
+          error: 'User not found'
         }]);
       }
 
       const validPassword = await bcrypt.compare(body.password, rows[0].password);
 
       if (!validPassword) {
-        console.error(`login error, credentials do not match`);
+        console.error('login error, credentials do not match');
         return reject([404, {
-          error: "User or password incorrect"
+          error: 'User or password incorrect'
         }]);
       }
 
@@ -155,7 +156,7 @@ function Login(req) {
         expiresIn: 1200
       });
       return resolve({
-        authentication: "ok",
+        authentication: 'ok',
         token
       });
     } catch (error) {

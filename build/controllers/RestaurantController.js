@@ -1,12 +1,13 @@
 "use strict";
 
-const tokenDecoder = require("../utils/JwtDecoder");
+/* eslint-disable no-async-promise-executor */
+const tokenDecoder = require('../utils/JwtDecoder');
 
-const joi = require("@hapi/joi");
+const joi = require('@hapi/joi');
 
-const logger = require("../logs/logger");
+const logger = require('../logs/logger');
 
-const db = require("../db/db");
+const db = require('../db/db');
 
 function Save(req) {
   return new Promise(async (resolve, reject) => {
@@ -40,9 +41,9 @@ function Save(req) {
 
     try {
       const dataToSave = [body.name, body.address, false, Date.now(), userId, 0];
-      await db.query("INSERT INTO restaurants (name, address, public, creation_date, user_id, total_likes) VALUES($1, $2, $3, to_timestamp($4 / 1000.0), $5, $6)", dataToSave);
+      await db.query('INSERT INTO restaurants (name, address, public, creation_date, user_id, total_likes) VALUES($1, $2, $3, to_timestamp($4 / 1000.0), $5, $6)', dataToSave);
       return resolve({
-        data: "The restaurant has been saved"
+        data: 'The restaurant has been saved'
       });
     } catch (error) {
       console.error(error);
@@ -57,8 +58,8 @@ function Save(req) {
 function GetAllByUser(req) {
   return new Promise(async (resolve, reject) => {
     let userId;
-    let pageNumber = req.query["page"];
-    let pageSize = req.query["size"];
+    let pageNumber = req.query['page'];
+    let pageSize = req.query['size'];
 
     if (!pageNumber) {
       pageNumber = 0;
@@ -80,7 +81,7 @@ function GetAllByUser(req) {
     try {
       const {
         rows
-      } = await db.query("SELECT COUNT(restaurants.id) as totalElements FROM restaurants where restaurants.user_id = $1", [userId]);
+      } = await db.query('SELECT COUNT(restaurants.id) as totalElements FROM restaurants where restaurants.user_id = $1', [userId]);
       const totalElements = rows[0].totalelements;
       const totalPages = Math.ceil(totalElements / pageSize);
 
@@ -90,7 +91,7 @@ function GetAllByUser(req) {
         pageNumber = 0;
       }
 
-      const results = await db.query("SELECT * FROM restaurants where restaurants.user_id = $1 limit $2 offset $3", [userId, pageSize, pageNumber * pageSize]);
+      const results = await db.query('SELECT * FROM restaurants where restaurants.user_id = $1 limit $2 offset $3', [userId, pageSize, pageNumber * pageSize]);
       resolve({
         totalElements: totalElements,
         totalPages: Math.ceil(totalElements / pageSize),
@@ -111,8 +112,8 @@ function GetAllByUser(req) {
 
 function GetAllPublicRestaurants(req) {
   return new Promise(async (resolve, reject) => {
-    let pageNumber = req.query["page"];
-    let pageSize = req.query["size"];
+    let pageNumber = req.query['page'];
+    let pageSize = req.query['size'];
 
     if (!pageNumber) {
       pageNumber = 0;
@@ -125,7 +126,7 @@ function GetAllPublicRestaurants(req) {
     try {
       let {
         rows
-      } = await db.query("SELECT COUNT(r.id) as totalElements FROM restaurants AS r WHERE r.public='true'");
+      } = await db.query('SELECT COUNT(r.id) as totalElements FROM restaurants AS r WHERE r.public=\'true\'');
       const totalElements = rows[0].totalelements;
       const totalPages = Math.ceil(totalElements / pageSize);
 
@@ -135,7 +136,7 @@ function GetAllPublicRestaurants(req) {
         pageNumber = 0;
       }
 
-      let results = await db.query("SELECT r.id, r.name, r.address, r.public AS is_public, r.total_likes  FROM restaurants AS r WHERE r.public='true' ORDER BY r.name DESC LIMIT $1 OFFSET $2 ;", [pageSize, pageNumber * pageSize]);
+      let results = await db.query('SELECT r.id, r.name, r.address, r.public AS is_public, r.total_likes  FROM restaurants AS r WHERE r.public=\'true\' ORDER BY r.name DESC LIMIT $1 OFFSET $2 ;', [pageSize, pageNumber * pageSize]);
       return resolve({
         totalElements: totalElements,
         totalPages: Math.ceil(totalElements / pageSize),
@@ -145,7 +146,7 @@ function GetAllPublicRestaurants(req) {
         data: results.rows
       });
     } catch (error) {
-      console.log("Error searching all publics restaurants, ", error);
+      console.log('Error searching all publics restaurants, ', error);
       logger.error(error);
       return reject([500, {
         error
@@ -157,12 +158,12 @@ function GetAllPublicRestaurants(req) {
 function LikeRestaurant(req) {
   return new Promise(async (resolve, reject) => {
     let userId;
-    const restaurantId = req.query["restaurantId"];
+    const restaurantId = req.query['restaurantId'];
 
     if (!restaurantId) {
-      console.error("Restaurant id is not present");
+      console.error('Restaurant id is not present');
       return reject([404, {
-        error: "Restaurant id is not present"
+        error: 'Restaurant id is not present'
       }]);
     }
 
@@ -170,19 +171,19 @@ function LikeRestaurant(req) {
       const data = await getDecodedToken(req);
       userId = data.id;
     } catch (error) {
-      console.error("User id not found");
+      console.error('User id not found');
       return reject([404, {
-        error: "User id not found"
+        error: 'User id not found'
       }]);
     }
 
     try {
-      await db.query("INSERT INTO linked_restaurants (user_id, restaurant_id, like_date) VALUES ( $1, $2, to_timestamp($3 / 1000.0))", [userId, restaurantId, Date.now()]);
+      await db.query('INSERT INTO linked_restaurants (user_id, restaurant_id, like_date) VALUES ( $1, $2, to_timestamp($3 / 1000.0))', [userId, restaurantId, Date.now()]);
       await db.query(`
       UPDATE restaurants SET total_likes=likes.total_likes + 1 , update_date=to_timestamp($2 / 1000.0) FROM( SELECT total_likes FROM restaurants where restaurants.id = $1) 
       as likes where restaurants.id = $1`, [restaurantId, Date.now()]);
       return resolve({
-        data: "The like has been registered"
+        data: 'The like has been registered'
       });
     } catch (error) {
       console.error(`Registration like error: ${error}`);
@@ -197,8 +198,8 @@ function LikeRestaurant(req) {
 function GetMyLikedRestaurants(req) {
   return new Promise(async (resolve, reject) => {
     let userId;
-    let pageNumber = req.query["page"];
-    let pageSize = req.query["size"];
+    let pageNumber = req.query['page'];
+    let pageSize = req.query['size'];
 
     if (!pageNumber) {
       pageNumber = 0;
@@ -212,9 +213,9 @@ function GetMyLikedRestaurants(req) {
       const data = await getDecodedToken(req);
       userId = data.id;
     } catch (error) {
-      console.error("User id not found");
+      console.error('User id not found');
       return reject([404, {
-        error: "User id not found"
+        error: 'User id not found'
       }]);
     }
 
@@ -244,7 +245,7 @@ function GetMyLikedRestaurants(req) {
         data: results.rows
       });
     } catch (error) {
-      console.error("Searching liked restaurants error: ", error);
+      console.error('Searching liked restaurants error: ', error);
       logger.error(error);
       return reject([500, {
         error
@@ -255,12 +256,12 @@ function GetMyLikedRestaurants(req) {
 
 function getDecodedToken(req) {
   return new Promise((resolve, reject) => {
-    const header = req.header("Authorization");
+    const header = req.header('Authorization');
 
     if (!header) {
-      console.error("Header token is not present");
+      console.error('Header token is not present');
       return reject([404, {
-        error: "Authentication header not found"
+        error: 'Authentication header not found'
       }]);
     }
 
@@ -268,9 +269,9 @@ function getDecodedToken(req) {
     const user = tokenDecoded.payload;
 
     if (!user && !user.id) {
-      console.error("Header token is not present");
+      console.error('Header token is not present');
       return reject([404, {
-        error: "Missing arguments"
+        error: 'Missing arguments'
       }]);
     }
 

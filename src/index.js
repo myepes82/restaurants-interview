@@ -1,19 +1,19 @@
-const Server = require('./server')
+const Server = require('./server');
 
 
-if (process.env.NODE_ENV !== "production") {
-    require('dotenv').config()
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
 }
 
 
-const serverInstance  = new Server()
+const serverInstance  = new Server();
 
 function main() {
-    serverInstance.connect()
+    serverInstance.connect();
 }
 
 
-main()
+main();
 
 
 
