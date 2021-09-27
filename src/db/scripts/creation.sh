@@ -59,14 +59,13 @@ fi
 echo "" > $APP_HOME/$APP_OUTPUT
 if [ $1 == "pg" ]; then
     export PGUSER=$PG_DBUSER_ADM
-    export PGPASSWORD=$3
+    echo "Imporing database  PostgreSQL. This can take any minutes..."
     psql -L $APP_HOME/$APP_OUTPUT -c "create user $PG_DBUSER createdb createuser createrole;" >> $APP_HOME/$APP_OUTPUT
     psql -L $APP_HOME/$APP_OUTPUT -c "alter user $PG_DBUSER with password '$3';" >> $APP_HOME/$APP_OUTPUT
     psql -L $APP_HOME/$APP_OUTPUT -c "create database $PG_DBNAME;" >> $APP_HOME/$APP_OUTPUT
-    echo "Imporing database  PostgreSQL. This can take any minutes..."
+    psql -L $APP_HOME/$APP_OUTPUT -c "alter database $PG_DBNAME owner to $PG_DBUSER;" >> $APP_HOME/$APP_OUTPUT
     psql -L $APP_HOME/$APP_OUTPUT -d $PG_DBNAME -f $APP_HOME/$2 >> $APP_HOME/$APP_OUTPUT
     unset PGUSER
-    unset PGPASSWORD
     echo "Database were imported '$APP_HOME/$APP_OUTPUT'."
     echo
 else
