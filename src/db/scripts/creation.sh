@@ -5,7 +5,7 @@ sudo /etc/init.d/postgresql restart
 # -- CONFIGURACIÓN DE VARIABLES GLOBALES
 APP_HOME="."
 APP_OUTPUT="import.log"
-PG_DBUSER_ADM="ghost"
+PG_DBUSER_ADM="restaurants"
 PG_DBUSER="ghost"
 PG_DBPASS="1234"
 PG_DBNAME="restaurants"
@@ -59,7 +59,10 @@ fi
 echo "" > $APP_HOME/$APP_OUTPUT
 if [ $1 == "pg" ]; then
     export PGUSER=$PG_DBUSER_ADM
-    export PGPASSWORD=$DBADMIN_SECRET_PASSWD
+    export PGPASSWORD=$3
+    echo "passoword"
+    echo $3
+    echo "====="
     psql -L $APP_HOME/$APP_OUTPUT -c "create user $PG_DBUSER createdb createuser createrole;" >> $APP_HOME/$APP_OUTPUT
     psql -L $APP_HOME/$APP_OUTPUT -c "alter user $PG_DBUSER with password '$PG_DBPASS';" >> $APP_HOME/$APP_OUTPUT
     psql -L $APP_HOME/$APP_OUTPUT -c "create database $PG_DBNAME;" >> $APP_HOME/$APP_OUTPUT
