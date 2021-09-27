@@ -29,6 +29,9 @@ class Server {
     app.use(morgan('dev'));
     app.use('/api/auth', sqlInjectionPreventer, authRoutes);
     app.use('/api/restaurant', authJwtAuthorizer, sqlInjectionPreventer, restaurantRoutes);
+    app.get('/', (req, res) => {
+      res.status(200).send('Server working');
+    });
   }
 
   corsConfiguration(origin, successStatus) {
