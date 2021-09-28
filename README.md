@@ -308,15 +308,21 @@ Restaurant get all restaurants liked by user logged:
                     - Type: any
                     - Description: here the error is descripted
 
-
-like restaurant: 
-    - EndPoint: /api/restaurant/like-restaurant?restaurantId=#
-    - Description: this endpoint allows you to like a restaurant
+Get all public restaurants: 
+    - EndPoint: /api/restaurant/get-all?page=#&size=#
+    - Description: this endpoint allows get all paginated public restaurants 
     - Headers:
         - Authorization:
             - Type: string
             - Description: token for allowing services access
             - Example: Bearer <token>
+    - Query Params:
+        - page:
+            - Type: number
+            - Description: the page for the pagination
+        - size:
+            - Type: number
+            - Description: the size of the pages in the paginated object
     - Body: none
     - Responses:
         - Avaliable Status code:
@@ -345,6 +351,83 @@ like restaurant:
                 - data:
                     - Type: array
                     - Description: data list on the current page
+        - Error Response:
+            - Type: JSON
+            - Description: an error response from server
+            - Attributes:
+                - error:
+                    - Type: any
+                    - Description: here the error is descripted
+
+
+like restaurant: 
+    - EndPoint: /api/restaurant/like-restaurant?restaurantId=#
+    - Description: this endpoint allows you to like a restaurant
+    - Query Params:
+        - restaurantId:
+            - Type: number
+            - Description: the id of the restaurant you want to like
+    - Headers:
+        - Authorization:
+            - Type: string
+            - Description: token for allowing services access
+            - Example: Bearer <token>
+    - Body: none
+    - Responses:
+        - Avaliable Status code:
+            - 200
+            - 404
+            - 500
+        - Successful Response:
+            - Type: JSON
+            - Description: response if authentication was successful
+            - Attributes:
+                - data:
+                    - Type: string
+                    - Description: info about saved like
+        - Error Response:
+            - Type: JSON
+            - Description: an error response from server
+            - Attributes:
+                - error:
+                    - Type: any
+                    - Description: here the error is descripted
+
+
+update restaurant: 
+    - EndPoint: /api/restaurant/update-restaurant
+    - Description: this endpoint allows you to update a restaurant
+    - Headers:
+        - Authorization:
+            - Type: string
+            - Description: token for allowing services access
+            - Example: Bearer <token>
+    - Body:
+        - id:
+            - Type: number
+            - Constrains: required
+            - Description: Is the restaurant id
+        - name:
+            - Type: string
+            - Constrains: min length 2, max length 100
+        - address:
+            - Type: string
+            - Constrains: min length 10, max length 255
+        - public:
+            - Type: boolean
+            - Constrains: none
+    - Responses:
+        - Avaliable Status code:
+            - 200
+            - 404
+            - 500
+        - Successful Response:
+            - Type: JSON
+            - Description: response if authentication was successful
+            - Attributes:
+                - data:
+                    - Type: string
+                    - Description: info about updated restaurant
         - Error Response:
             - Type: JSON
             - Description: an error response from server

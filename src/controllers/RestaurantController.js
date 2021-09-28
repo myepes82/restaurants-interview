@@ -166,7 +166,7 @@ function LikeRestaurant(req) {
         }
 
         try {
-            const {rows} = db.query('SELECT * FROM restaurants WHERE restaurants.id = $1', [restaurantId]);
+            const {rows} = await db.query('SELECT * FROM restaurants WHERE restaurants.id = $1', [restaurantId]);
             if (rows.length === 0) {
                 return reject([404, {error: 'Restaurant not found'} ]);
             }
@@ -303,6 +303,34 @@ function UpdateRestaurant(req){
     });
 }
 
+function DeleteRestaurant(req){
+    return new Promise(async(resolve, reject)=> {
+        let userId;
+        try {
+            const data = await getDecodedToken(req);
+            userId = data.id;
+            if (!userId) {
+                console.error('User identifier not found');
+                return reject([404, {error: 'User identifier not found'}]);
+            }
+        } catch (error) {
+            console.error(error);
+            return reject([404, {error: 'User identifier not found'}]);
+        }
+        const restaurantId = req.query['restaurantId'];
+        if (!restaurantId) {
+            console.error('Restaurant id not found');
+            return reject([404, {error: 'Restaurant identifier not found'}]);
+        }
+        try {
+            await db.query('DELET FROM linked_restaurants WHERE restaurant_id = $1', [restaurantId]);
+        } catch (error) {
+            console.error('Error on restaurant deletion: ', error);
+            logger.error('Error on restaurant deletion: ', error);
+            return reject([500, {error: 'An error has ocurred, please try again later'}]);
+        }
+    });
+}
 
 function getDecodedToken(req) {
     return new Promise((resolve, reject) => {

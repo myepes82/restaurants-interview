@@ -88,3 +88,9 @@
   line: '534',
   routine: '_bt_check_unique'
 }
+[2021-09-28T16:38:55.464] [ERROR] cheese - Registration like error:  TypeError: Cannot read property 'length' of undefined
+    at C:\Users\Marlon\Desktop\ProjectInterview\src\controllers\/RestaurantController.js:170:22
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+[2021-09-28T16:39:50.986] [ERROR] cheese - Registration like error:  TypeError: Cannot read property 'length' of undefined
+    at C:\Users\Marlon\Desktop\ProjectInterview\src\controllers\/RestaurantController.js:170:22
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
