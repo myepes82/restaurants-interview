@@ -1,17 +1,27 @@
-version: "3.7"
+version: "3.1"
+image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: safi
+    ports:
+      - 5433:5432
+    networks:
+      - net-calls
 
 services:
   database:
     image: postgres:12
     restart: always
     environment:
-      POSTGRES_DB: postgres
-      POSTGRES_PASSWORD: 1234
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
       POSTGRES_DB: restaurants
     ports:
-      - 5432:5432  
+      - 5433:5432
     networks:
       - interview
+
   pgadmin:
     image: dpage/pgadmin4
     restart: always
@@ -22,6 +32,8 @@ services:
       - database
     ports:
       - 80:80
+    links:
+      - database
     networks:
       - interview
 
@@ -31,13 +43,15 @@ services:
       NODE_ENV: production
       SECRET: 1006361228mA!
       RDS_PORT: 5432
-      RDS_PASSWORD: 1234
+      RDS_PASSWORD: postgres
       RDS_DB_NAME: restaurants
       RDS_USERNAME: postgres
     ports:
       - 8080:8080
     build: . 
     depends_on:
+      - database
+    links:
       - database
     networks:
       - interview
