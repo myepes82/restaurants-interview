@@ -2,16 +2,16 @@ version: "3.7"
 
 services:
   database:
-    image: postgres
+    image: postgres:12
+    restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1006361228mA!
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: 1234
       POSTGRES_DB: restaurants
     ports:
-      - 5432:5432
+      - 5432:5432  
     networks:
       - interview
-  
   pgadmin:
     image: dpage/pgadmin4
     restart: always
@@ -30,9 +30,8 @@ services:
     environment:
       NODE_ENV: production
       SECRET: 1006361228mA!
-      RDS_HOSTNAME: localhost
       RDS_PORT: 5432
-      RDS_PASSWORD: 1006361228mA!
+      RDS_PASSWORD: 1234
       RDS_DB_NAME: restaurants
       RDS_USERNAME: postgres
     ports:
