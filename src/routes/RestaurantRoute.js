@@ -52,4 +52,14 @@ routes.get('/get-all', (req, res)=> {
         });
 });
 
+routes.put('/update-restaurant', (req, res) => {
+    controller.updateRestaurant(req)
+        .then((response)=> {
+            res.status(200).send(response);
+        })
+        .catch((error)=> {
+            res.status(error[0]).send(error[1]);
+        });
+});
+
 module.exports = routes;

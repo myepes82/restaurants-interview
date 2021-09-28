@@ -42,9 +42,9 @@ function Save(req) {
             );
             return resolve({ data: 'The restaurant has been saved' });
         } catch (error) {
-            console.error(error);
-            logger.error(`Error saving restaurant: ${error}`);
-            return reject([500, { error }]);
+            console.error('Error saving restaurant: ', error);
+            logger.error('Error saving restaurant: ' , error);
+            return reject([500, { error: 'An error has ocurred, please try again.' }]);
         }
     });
 }
@@ -65,8 +65,11 @@ function GetAllByUser(req) {
         try {
             const decodedToken = await getDecodedToken(req);
             userId = decodedToken.id;
+            if (!userId) {
+                return reject([404, {error: 'User identifier not found'}]);
+            }
         } catch (error) {
-            return reject([404, { error }]);
+            return reject([404, { error: 'User identifier not found' }]);
         }
 
         try {
@@ -94,9 +97,9 @@ function GetAllByUser(req) {
                 data: results.rows,
             });
         } catch (error) {
-            console.error(`Searching restaurants error ${error}`);
-            logger.error(error);
-            return reject([500, { error }]);
+            console.error('Searching restaurants error: ', error);
+            logger.error('Searching restaurants error: ', error);
+            return reject([500, { error: 'An error has ocurred, please try again.' }]);
         }
     });
 }
@@ -136,9 +139,9 @@ function GetAllPublicRestaurants(req) {
             });
 
         } catch (error) {
-            console.log('Error searching all publics restaurants, ', error);
-            logger.error(error);
-            return reject([500, { error }]);
+            console.log('Error searching all publics restaurants: ', error);
+            logger.error('Error searching all publics restaurants: ', error);
+            return reject([500, { error: 'An error has ocurred, please try again.' }]);
         }
     });
 }
@@ -148,15 +151,18 @@ function LikeRestaurant(req) {
         let userId;
         const restaurantId = req.query['restaurantId'];
         if (!restaurantId) {
-            console.error('Restaurant id is not present');
-            return reject([404, { error: 'Restaurant id is not present' }]);
+            console.error('Restaurant identifier is not present');
+            return reject([404, { error: 'Restaurant identifier is not present' }]);
         }
         try {
             const data = await getDecodedToken(req);
             userId = data.id;
+            if (!userId) {
+                return reject([404, {error: 'User identifier not found'}]);
+            }
         } catch (error) {
             console.error('User id not found');
-            return reject([404, { error: 'User id not found' }]);
+            return reject([404, { error: 'User identifier not found' }]);
         }
 
         try {
@@ -172,9 +178,9 @@ function LikeRestaurant(req) {
             );
             return resolve({ data: 'The like has been registered' });
         } catch (error) {
-            console.error(`Registration like error: ${error}`);
-            logger.error(error);
-            return reject([500, { error }]);
+            console.error('Registration like error: ', error);
+            logger.error('Registration like error: ', error);
+            return reject([500, { error: 'An error has ocurred, please try again.' }]);
         }
     });
 }
@@ -193,9 +199,12 @@ function GetMyLikedRestaurants(req) {
         try {
             const data = await getDecodedToken(req);
             userId = data.id;
+            if (!userId) {
+                return reject([404, {error: 'User identifier not found'}]);
+            }
         } catch (error) {
             console.error('User id not found');
-            return reject([404, { error: 'User id not found' }]);
+            return reject([404, { error: 'User identifier not found' }]);
         }
         try {
             const { rows } = await db.query(
@@ -227,11 +236,66 @@ function GetMyLikedRestaurants(req) {
             });
         } catch (error) {
             console.error('Searching liked restaurants error: ', error);
-            logger.error(error);
-            return reject([500, { error }]);
+            logger.error('Searching liked restaurants error: ', error);
+            return reject([500, { error: 'An error has ocurred, please try again.'}]);
         }
     });
 }
+function UpdateRestaurant(req){
+    return new Promise(async(resolve, reject)=>{
+        if (!req.body) {
+            console.error('Request Body not found');
+            return reject([404, {error: 'Request body not found'}]);
+        }
+        
+        if (!req.body.id) {
+            console.error('Restaurant id not found');
+            return reject([404, {error: 'Restaurant identifier not found'}]);
+        }
+        const body = req.body;
+
+        let userId;
+
+        try {
+            const data = await getDecodedToken(req);
+            userId = data.id;
+            if (!userId) {
+                return reject([404, {error: 'User identifier not found'}]);
+            }
+        } catch (error) {
+            console.error('User id not found');
+            return reject([404, {error: 'User identifier not found'}]);
+        }
+        let foundRestaurant;
+        try {
+            const {rows} = await db.query('SELECT * FROM restaurants AS restaurant  WHERE restaurant.id = $1 AND restaurant.user_id = $2', [req.body.id, userId]);
+            if (rows.length === 0) {
+                console.error('Restaurant not found');
+                return reject([404, {error: 'Restaurant not found'}]);
+            }
+            foundRestaurant = rows[0];
+        } catch (error) {
+            console.error('Error searching restaurant: ', error);
+            logger.error('Error searching restaurant', error);
+            return reject([500, {error: 'An error has ocurred, please try again.'}]);
+        }
+
+        try {
+            const publicR = body.public !== undefined && typeof body.public === 'boolean' ? body.public : foundRestaurant.public;
+            const nameR = body.name !== undefined && typeof body.name === 'string' && body.name.length > 2 && body.name.length < 100 ? body.name : foundRestaurant.name;
+            const addressR = body.address !== undefined && typeof body.address === 'string' && body.address.length > 10 && body.address.length < 255 ? body.address : foundRestaurant.address;
+            await db.query(
+                'UPDATE restaurants SET name = $1,  address = $2,  public = $3 ,  update_date = to_timestamp($4 / 1000.0) WHERE id = $5', 
+                [nameR, addressR, publicR, Date.now(), req.body.id]);
+            return resolve({data: 'Restaurant updated'});
+        } catch (error) {
+            console.error('Error updationg restaurant ', error);
+            logger.error('Error updating restaurant: ', error );
+            return reject([500, {error: 'An error has ocurred, please try again.'}]);
+        }
+    });
+}
+
 
 function getDecodedToken(req) {
     return new Promise((resolve, reject) => {
@@ -250,10 +314,12 @@ function getDecodedToken(req) {
     });
 }
 
+
 module.exports = {
     save: Save,
     getAllByUser: GetAllByUser,
     likeRestaurant: LikeRestaurant,
     getMyLikedRestaurants: GetMyLikedRestaurants,
-    getAllPublicRestaurants: GetAllPublicRestaurants
+    getAllPublicRestaurants: GetAllPublicRestaurants,
+    updateRestaurant: UpdateRestaurant
 };

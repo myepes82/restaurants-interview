@@ -1,1 +1,90 @@
 [2021-09-26T20:28:19.567] [ERROR] cheese - Searching existing email error: TypeError: Cannot read property '0' of undefined
+[2021-09-27T21:04:25.460] [ERROR] cheese - Searching existing user error: TypeError: Cannot read property 'query' of undefined
+[2021-09-27T21:05:21.099] [ERROR] cheese - Searching existing user error: TypeError: Cannot read property 'query' of undefined
+[2021-09-28T07:49:53.375] [ERROR] cheese - Error updating restaurant:  error: error de sintaxis en o cerca de «address»
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\src\parser.ts:369:69)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\src\parser.ts:188:21)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\src\parser.ts:103:30)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\src\index.ts:7:48)
+    at Socket.emit (events.js:375:28)
+    at Socket.emit (domain.js:470:12)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 106,
+  severity: 'ERROR',
+  code: '42601',
+  detail: undefined,
+  hint: undefined,
+  position: '39',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'scan.l',
+  line: '1134',
+  routine: 'scanner_yyerror'
+}
+[2021-09-28T07:53:36.955] [ERROR] cheese - Error updating restaurant:  error: la sintaxis de entrada no es válida para tipo boolean: «$3»
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\src\parser.ts:369:69)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\src\parser.ts:188:21)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\src\parser.ts:103:30)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\src\index.ts:7:48)
+    at Socket.emit (events.js:375:28)
+    at Socket.emit (domain.js:470:12)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 178,
+  severity: 'ERROR',
+  code: '22P02',
+  detail: undefined,
+  hint: undefined,
+  position: '60',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\utils\\adt\\bool.c',
+  line: '154',
+  routine: 'boolin'
+}
+[2021-09-28T13:48:51.472] [ERROR] cheese - Error when filling the database  error: llave duplicada viola restricción de unicidad «users_pkey»
+    at Parser.parseErrorMessage (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\src\parser.ts:369:69)
+    at Parser.handlePacket (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\src\parser.ts:188:21)
+    at Parser.parse (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\src\parser.ts:103:30)
+    at Socket.<anonymous> (C:\Users\Marlon\Desktop\ProjectInterview\node_modules\pg-protocol\src\index.ts:7:48)
+    at Socket.emit (events.js:375:28)
+    at Socket.emit (domain.js:470:12)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+  length: 249,
+  severity: 'ERROR',
+  code: '23505',
+  detail: 'Ya existe la llave (id)=(1).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'users',
+  column: undefined,
+  dataType: undefined,
+  constraint: 'users_pkey',
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\access\\nbtree\\nbtinsert.c',
+  line: '534',
+  routine: '_bt_check_unique'
+}
