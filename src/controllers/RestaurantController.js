@@ -166,6 +166,13 @@ function LikeRestaurant(req) {
         }
 
         try {
+            const {rows} = db.query('SELECT * FROM restaurants WHERE restaurants.id = $1', [restaurantId]);
+            if (rows.length === 0) {
+                return reject([404, {error: 'Restaurant not found'} ]);
+            }
+            if (rows[0].public !== undefined && !rows[0].public) {
+                return reject([400, {error: 'Restaurant not available to like'}]);
+            }
             await db.query(
                 'INSERT INTO linked_restaurants (user_id, restaurant_id, like_date) VALUES ( $1, $2, to_timestamp($3 / 1000.0))',
                 [userId, restaurantId, Date.now()]

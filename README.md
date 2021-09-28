@@ -259,8 +259,7 @@ Restaurant get all by user logged:
 
 Restaurant get all restaurants liked by user logged: 
     - EndPoint: /api/restaurant/my-liked-restaurants?page=#&size=#
-    - Description: this endpoint allows get all paginated restaurants created by the logged user, 
-                   this enpoint recive thow query params, page and size
+    - Description: this endpoint allows get all paginated restaurants liked by logger user
     - Headers:
         - Authorization:
             - Type: string
@@ -273,6 +272,51 @@ Restaurant get all restaurants liked by user logged:
         - size:
             - Type: number
             - Description: the size of the pages in the paginated object
+    - Body: none
+    - Responses:
+        - Avaliable Status code:
+            - 200
+            - 404
+            - 500
+        - Successful Response:
+            - Type: JSON
+            - Description: response if authentication was successful
+            - Attributes:
+                - totalElements:
+                    - Type: string
+                    - Description: total items that match the query
+                - totalPages:
+                    - Type: number
+                    - Description: total pages within the database
+                - size:
+                    - Type: string
+                    - Description: size of the page
+                - page:
+                    - Type: number
+                    - Description: current page
+                - elements:
+                    - Type: number
+                    - Description: total items on current page
+                - data:
+                    - Type: array
+                    - Description: data list on the current page
+        - Error Response:
+            - Type: JSON
+            - Description: an error response from server
+            - Attributes:
+                - error:
+                    - Type: any
+                    - Description: here the error is descripted
+
+
+like restaurant: 
+    - EndPoint: /api/restaurant/like-restaurant?restaurantId=#
+    - Description: this endpoint allows you to like a restaurant
+    - Headers:
+        - Authorization:
+            - Type: string
+            - Description: token for allowing services access
+            - Example: Bearer <token>
     - Body: none
     - Responses:
         - Avaliable Status code:
