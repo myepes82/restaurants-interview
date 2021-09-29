@@ -8,6 +8,7 @@ const authRoutes = require('./routes/AuthRoute');
 const authJwtAuthorizer = require('./middlewares/auth-jwt-validate');
 const axios = require('axios');
 
+
 class Server {
   SERVER = undefined;
   PORT = process.env.PORT || 8080;
@@ -17,6 +18,7 @@ class Server {
       app.use(express.urlencoded({ extended: true }));
       app.use(cors(this.corsConfiguration('*', 200)));
       app.use(morgan('dev'));
+
       app.use('/api/auth', sqlInjectionPreventer, authRoutes);
       app.use(
           '/api/restaurant',
@@ -24,6 +26,7 @@ class Server {
           sqlInjectionPreventer,
           restaurantRoutes
       );
+
 
       app.get('/', async(req, res)=> {
           try {

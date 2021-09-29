@@ -2,43 +2,16 @@ version: "3.1"
 
 
 services:
-  postgres:
-    image: postgres:12
-    restart: always
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1006361228mA!
-      POSTGRES_DB: restaurants
-    ports:
-      - 5433:5432
-
-  pgadmin:
-    image: dpage/pgadmin4
-    restart: always
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=myepes82@misena.edu.co
-      - PGADMIN_DEFAULT_PASSWORD=1234
-    ports:
-      - 80:80
-    depends_on:
-      - postgres
-    links:
-      - postgres
-
   backend:
     environment:
       NODE_ENV: production
       SECRET: 1006361228mA!
-      RDS_PORT: 5432
-      RDS_HOST: postgres
+      RDS_PORT: 5433
+      RDS_HOST: 3.142.84.73
       RDS_PASSWORD: 1006361228mA!
       RDS_DB_NAME: restaurants
       RDS_USERNAME: postgres
       FILL_DATABASE: N
-    depends_on:
-      - postgres
-    links:
-      - postgres
     ports:
       - 8080:8080
     build: . 

@@ -38,13 +38,13 @@ pool.connect((error, client, done )=> {
             console.error('Error creating db', err);
             logger.error('Error creating db', err);
         }
-        if (process.env.NODE_ENV !== 'production') {
+        if (process.env.FILL_DATABASE === 'N') {
             done(client);
         }
         console.log(result);
     });
 
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === 'production' && process.env.FILL_DATABASE === 'Y') {
         const dummyData = fs.readFileSync(`${__dirname}/scripts/dummy.sql`, 'utf-8');
         client.query(dummyData, (dummyErr, dummyResult)=>{
             if (dummyErr) {
