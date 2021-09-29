@@ -49,6 +49,7 @@ function Save(req) {
     });
 }
 
+
 function GetAllByUser(req) {
     return new Promise(async (resolve, reject) => {
         let userId;
@@ -229,10 +230,11 @@ function GetMyLikedRestaurants(req) {
                 pageNumber = 0;
             }
             const results = await db.query(
-                `SELECT r.id, r.name, r.address, lr.like_date FROM linked_restaurants AS lr INNER JOIN restaurants AS r ON lr.id  = r.id
+                `SELECT r.id, r.name, r.address, lr.like_date FROM linked_restaurants AS lr INNER JOIN restaurants AS r ON lr.restaurant_id  = r.id
         WHERE lr.user_id = $1 AND r.public = 'true' ORDER BY r.name DESC LIMIT $2 OFFSET $3`,
                 [userId, pageSize, pageNumber * pageSize]
             );
+
             return resolve({
                 totalElements: totalElements,
                 totalPages: Math.ceil(totalElements / pageSize),
@@ -323,7 +325,14 @@ function DeleteRestaurant(req){
             return reject([404, {error: 'Restaurant identifier not found'}]);
         }
         try {
-            await db.query('DELET FROM linked_restaurants WHERE restaurant_id = $1', [restaurantId]);
+            const {rows} = await db.query('SELECT * FROM restaurants where id = $1 AND user_id = $2', [restaurantId, userId]);
+            if (rows.length === 0) {
+                console.error('Restaurant not found');
+                return reject([404, {error: 'Restaurant not found'}]);
+            }
+            await db.query('DELETE FROM linked_restaurants WHERE restaurant_id = $1', [restaurantId]);
+            await db.query('DELETE FROM restaurants WHERE id=$1', [restaurantId]);
+            return resolve({data : 'Restaurant deleted'});
         } catch (error) {
             console.error('Error on restaurant deletion: ', error);
             logger.error('Error on restaurant deletion: ', error);
@@ -356,5 +365,6 @@ module.exports = {
     likeRestaurant: LikeRestaurant,
     getMyLikedRestaurants: GetMyLikedRestaurants,
     getAllPublicRestaurants: GetAllPublicRestaurants,
-    updateRestaurant: UpdateRestaurant
+    updateRestaurant: UpdateRestaurant,
+    deleteRestaurant: DeleteRestaurant
 };

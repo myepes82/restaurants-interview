@@ -75,6 +75,25 @@ ___________________________________________________________
 | creation_date | date                         - not null |
 |_______________|_________________________________________|
 
+# Dummy Data
+If you use docker host, use the next users:
+prueba1@gmail.com | 1006361228mA!
+prueba2@gmail.com | 1006361228mA!
+prueba3@gmail.com | 1006361228mA!
+prueba4@gmail.com | 1006361228mA!
+prueba5@gmail.com | 1006361228mA!
+
+If you are using localhost, you must fill the database manually 
+
+# Database
+
+If you are using docker host  or AWS host and you want access to db,
+you must use the following parameters:
+
+PORT=5433
+USERNAME=postgres
+DATABASE=restaurants
+PASSWORD=1006361228mA!
 
 # API'S
 
@@ -91,6 +110,7 @@ With this clear, here is the APIS list
 
 User Register: 
     - EndPoint: /api/auth/register
+    - Type: POST
     - Description: this endpoint allows you to register within the system
     - Headers: no mandatory header
     - Body:
@@ -126,6 +146,7 @@ User Register:
 
 User Login: 
     - EndPoint: /api/auth/login
+    - Type: POST
     - Description: this endpoint allows an user login within the system
     - Headers: no mandatory header
     - Body:
@@ -165,6 +186,7 @@ User Login:
 
 Restaurant Creation: 
     - EndPoint: /api/restaurant/save
+    - Type: POST
     - Description: this endpoint allows that an user logger create a restaurant
     - Headers:
         - Authorization:
@@ -205,6 +227,7 @@ Restaurant Creation:
 
 Restaurant get all by user logged: 
     - EndPoint: /api/restaurant/get-all-by-user?page=#&size=#
+    - Type: GET
     - Description: this endpoint allows get all paginated restaurants created by the logged user, 
                    this enpoint recive thow query params, page and size
     - Headers:
@@ -259,6 +282,7 @@ Restaurant get all by user logged:
 
 Restaurant get all restaurants liked by user logged: 
     - EndPoint: /api/restaurant/my-liked-restaurants?page=#&size=#
+    - Type: GET
     - Description: this endpoint allows get all paginated restaurants liked by logger user
     - Headers:
         - Authorization:
@@ -310,6 +334,7 @@ Restaurant get all restaurants liked by user logged:
 
 Get all public restaurants: 
     - EndPoint: /api/restaurant/get-all?page=#&size=#
+    - Type: GET
     - Description: this endpoint allows get all paginated public restaurants 
     - Headers:
         - Authorization:
@@ -362,6 +387,7 @@ Get all public restaurants:
 
 like restaurant: 
     - EndPoint: /api/restaurant/like-restaurant?restaurantId=#
+    - Type: GET
     - Description: this endpoint allows you to like a restaurant
     - Query Params:
         - restaurantId:
@@ -396,6 +422,7 @@ like restaurant:
 
 update restaurant: 
     - EndPoint: /api/restaurant/update-restaurant
+    - Type: PUT
     - Description: this endpoint allows you to update a restaurant
     - Headers:
         - Authorization:
@@ -416,6 +443,41 @@ update restaurant:
         - public:
             - Type: boolean
             - Constrains: none
+    - Responses:
+        - Avaliable Status code:
+            - 200
+            - 404
+            - 500
+        - Successful Response:
+            - Type: JSON
+            - Description: response if authentication was successful
+            - Attributes:
+                - data:
+                    - Type: string
+                    - Description: info about updated restaurant
+        - Error Response:
+            - Type: JSON
+            - Description: an error response from server
+            - Attributes:
+                - error:
+                    - Type: any
+                    - Description: here the error is descripted
+
+
+delete restaurant: 
+    - EndPoint: /api/restaurant/delete-restaurant?restaurantId=#
+    - Type: DELETE
+    - Description: this endpoint allows that you delete a restaurant
+    - Query Params:
+        - restaurantId:
+            - Type: number
+            - Description: the id of the restaurant you want to like
+    - Headers:
+        - Authorization:
+            - Type: string
+            - Description: token for allowing services access
+            - Example: Bearer <token>
+    - Body: none
     - Responses:
         - Avaliable Status code:
             - 200

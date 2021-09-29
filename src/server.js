@@ -3,10 +3,10 @@ const app = express();
 const cors = require('cors');
 const morgan = require('morgan');
 const sqlInjectionPreventer = require('./middlewares/sql-injection-prevent');
-
 const restaurantRoutes = require('./routes/RestaurantRoute');
 const authRoutes = require('./routes/AuthRoute');
 const authJwtAuthorizer = require('./middlewares/auth-jwt-validate');
+const axios = require('axios');
 
 class Server {
   SERVER = undefined;
@@ -25,8 +25,16 @@ class Server {
           restaurantRoutes
       );
 
-      app.get('/', (req, res)=> {
-          res.status(200).send('Server working');
+      app.get('/', async(req, res)=> {
+          try {
+              const response = await axios.get('http://www.randomnumberapi.com/api/v1.0/randomnumber');
+              if (response) {
+                  const number = response.data[0];
+                  res.status(200).send({number});
+              }
+          } catch (error) {
+              res.status(500).send('Internal server error');
+          }
       });
   }
 
