@@ -42,6 +42,9 @@ When you download it, you must do the following
 If you do not want to download or configure anything, you can use the application that is deployed in the aws cloud, for this you can simply make requests to the following host:
     - Host: http://3.142.84.73:8080
     
+# Swagger documentation
+if you want to see the internal documentation of the apis, go to the following path:
+http://<selected-host>:8080/api-docs
 
 # Data Model
 ____________________________________________________

@@ -27,7 +27,8 @@ class Server {
           restaurantRoutes
       );
 
-
+      const docs_handler =express.static(__dirname + '/docs/');
+      app.use('/api-docs', docs_handler );
       app.get('/', async(req, res)=> {
           try {
               const response = await axios.get('http://www.randomnumberapi.com/api/v1.0/randomnumber');
