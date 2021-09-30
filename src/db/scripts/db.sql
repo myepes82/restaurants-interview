@@ -3,7 +3,7 @@ BEGIN;
 
 CREATE TABLE IF NOT EXISTS public.linked_restaurants
 (
-    id bigint NOT NULL,
+    id serial NOT NULL,
     user_id bigint NOT NULL,
     restaurant_id bigint NOT NULL,
     like_date date NOT NULL,
@@ -15,7 +15,7 @@ WITH (
 
 CREATE TABLE IF NOT EXISTS public.restaurants  
 (
-    id bigint NOT NULL,
+    id serial NOT NULL,
     name character varying(100) NOT NULL,
     address character varying(255) NOT NULL,
     public boolean NOT NULL,
@@ -31,7 +31,7 @@ WITH (
 
 CREATE TABLE IF NOT EXISTS public.users
 (
-    id bigint NOT NULL,
+    id serial NOT NULL,
     email character varying(100) NOT NULL,
     password character varying(255) NOT NULL,
     creation_date timestamp without time zone NOT NULL,
