@@ -8,6 +8,7 @@ COPY package*.json ./
 COPY ./src ./src
 
 RUN npm install --production --silent && mv node_modules ../
+RUN npm install --dotenv-extended 
 
 EXPOSE 8080
 
